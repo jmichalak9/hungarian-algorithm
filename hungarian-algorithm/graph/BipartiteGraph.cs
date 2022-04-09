@@ -11,7 +11,7 @@ public class BipartiteGraph
         this.n = costs.GetLength(0);
     }
 
-    public (List<(int, int)>, int) MinWeightPerfectMatching()
+    public (List<(int x, int y)>, int) MinWeightPerfectMatching()
     {
         // labeling
         var lx = new int[n];
@@ -115,22 +115,23 @@ public class BipartiteGraph
                         // Continue searching for augmenting path
                         for (current_Y = 0; current_Y < n; current_Y++)
                         {
-                            if(!T[current_Y] && slack[current_Y] == 0)
+                            // When added edge is found (edge added to equality graph after labels modification)
+                            if (!T[current_Y] && slack[current_Y] == 0)
                             {
                                 // Augmenting path found
                                 if (matchY[current_Y] == -1)
                                 {
-                                    // TODO: O co tu chodzi?
+                                    // Get vertex from set X that have new edge
                                     current_X = slack_X[current_Y];
                                     is_augmenting_path = true;
                                     break;
                                 }
 
                                 T[current_Y] = true;
+                                var next_X = matchY[current_Y];
 
-                                if (!S[matchY[current_Y]])
+                                if (!S[next_X])
                                 {
-                                    var next_X = matchY[current_Y];
                                     q.Enqueue(next_X);
 
                                     S[next_X] = true;
@@ -139,7 +140,6 @@ public class BipartiteGraph
                                     // Update slack
                                     for (int t = 0; t < n; t++)
                                     {
-                                        // TODO: Check if t in T?
                                         if (costs[next_X, t] - lx[next_X] - ly[t] < slack[t])
                                         {
                                             slack[t] = costs[next_X, t] - lx[next_X] - ly[t];
@@ -153,14 +153,28 @@ public class BipartiteGraph
                 }
             }
 
-            for(int x = current_X, y = current_Y; x != -1; y = matchX[x], x = prev_X[x])
+            // Inverse edges in augmenting path
+            int previous_match;
+            for(int x = current_X, y = current_Y; x != -1; y = previous_match, x = prev_X[x])
             {
+                previous_match = matchX[x];
                 matchY[y] = x;
                 matchX[x] = y;
             }
         }
-        
-        return (new List<(int, int)>(), 0);
+
+        int result = 0;
+        var edges = new List<(int x, int y)>();
+        for (int i = 0; i < n; i++)
+        {
+            if (matchX[i] != -1)
+            {
+                result += costs[i, matchX[i]];
+                edges.Add((i, matchX[i]));
+            }
+        }
+
+        return (edges, result);
     }
 
     private void UpdateLabels(int[] slack, int[] lx, int[] ly, bool[] S, bool[] T)
