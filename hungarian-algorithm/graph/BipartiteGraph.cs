@@ -96,7 +96,6 @@ public class BipartiteGraph
                             // Update slack
                             for (int t = 0; t < n; t++)
                             {
-                                // TODO: Check if t in T?
                                 if (costs[next_X, t] - lx[next_X] - ly[t] < slack[t])
                                 {
                                     slack[t] = costs[next_X, t] - lx[next_X] - ly[t];
