@@ -38,6 +38,7 @@ public class BipartiteGraph
         // Main loop
         for (int i = 0; i < n; i++)
         {
+            q.Clear();
             ClearSets(S, T);
 
             var root = -1;
