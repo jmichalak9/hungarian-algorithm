@@ -87,7 +87,7 @@ public class BipartiteGraph
                             }
 
                             T[current_Y] = true;
-                            var next_X = matchY[current_X];
+                            var next_X = matchY[current_Y];
                             q.Enqueue(next_X);
 
                             S[next_X] = true;
