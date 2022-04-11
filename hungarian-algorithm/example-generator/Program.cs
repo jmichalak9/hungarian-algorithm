@@ -11,7 +11,7 @@ namespace ExampleGenerator
             public int N { get; set; }
             [Option('v', "verbose", Required = false, HelpText = "Set output to verbose messages.")]
             public bool Verbose { get; set; }
-            [Option("rand-min", Required = false, Default = 0, HelpText = "Minimal random weight.")]
+            [Option("rand-min", Required = false, Default = 1, HelpText = "Minimal random weight.")]
             public int RandMin { get; set; }
             [Option("rand-max", Required = false, Default = 10, HelpText = "Maximal random weight.")]
             public int RandMax { get; set; }
