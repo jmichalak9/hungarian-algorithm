@@ -56,18 +56,18 @@ namespace ExampleGenerator
                     writer.WriteLine($"{n}");
                     for (int i = 0; i < n; i++)
                     {
-                        for (int j = 0; j < n; j++)
+                        for (int j = 0; j < n-1; j++)
                         {
                             writer.Write($"{edges[i,j]} ");
                         }
 
-                        writer.WriteLine();
+                        writer.WriteLine($"{edges[i,n-1]}");
                     }
                 }
             }
             catch (Exception e)
             {
-                Console.WriteLine($"error: {e}");
+                Console.WriteLine($"error: {e.Message}");
             }
         }
     }

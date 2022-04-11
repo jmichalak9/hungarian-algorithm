@@ -7,7 +7,7 @@ public class GraphReader
 {
     public BipartiteGraph ReadGraph(string path)
     {
-        const Int32 bufferSize = 128;
+        const Int32 bufferSize = 128*128;
         using (var fileStream = File.OpenRead(path))
         using (var streamReader = new StreamReader(fileStream, Encoding.UTF8, true, bufferSize))
         {
@@ -23,7 +23,7 @@ public class GraphReader
                 var row = streamReader.ReadLine()?.Split()!;
                 if (row.Length != n)
                 {
-                    throw new Exception("incorrect number of values in a row");
+                    throw new Exception($"incorrect number of values in a row: expected {n}, got {row.Length}");
                 }
                 for (int j = 0; j < n; j++)
                 {
