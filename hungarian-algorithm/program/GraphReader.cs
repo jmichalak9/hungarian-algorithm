@@ -11,7 +11,7 @@ public class GraphReader
         using (var fileStream = File.OpenRead(path))
         using (var streamReader = new StreamReader(fileStream, Encoding.UTF8, true, bufferSize))
         {
-            String line = streamReader.ReadLine();
+            String line = streamReader.ReadLine()!;
             var n = Convert.ToInt32(line);
             if (n < 1)
             {
@@ -20,7 +20,7 @@ public class GraphReader
             int[,] costs = new int[n,n];
             for (int i = 0; i < n; i++)
             {
-                var row = streamReader.ReadLine()?.Split();
+                var row = streamReader.ReadLine()?.Split()!;
                 if (row.Length != n)
                 {
                     throw new Exception("incorrect number of values in a row");
