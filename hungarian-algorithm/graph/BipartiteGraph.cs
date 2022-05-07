@@ -13,7 +13,7 @@ public class BipartiteGraph
 
     public (List<(int x, int y)>, int) MinWeightPerfectMatching()
     {
-        // labeling
+        // Labeling
         var lx = new int[n];
         var ly = new int[n];
 

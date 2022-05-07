@@ -5,7 +5,7 @@ namespace program;
 
 public static class GraphReader
 {
-    public static int MaxWeight = 1_000_000;
+    public static readonly int MaxWeight = 1_000_000;
     public static BipartiteGraph ReadGraph(string path)
     {
         const Int32 bufferSize = 128*128;
