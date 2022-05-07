@@ -9,17 +9,18 @@ namespace ExampleGenerator
         {
             [Value(0)]
             public int N { get; set; }
-            [Option('v', "verbose", Required = false, HelpText = "Set output to verbose messages.")]
-            public bool Verbose { get; set; }
+
             [Option("rand-min", Required = false, Default = 1, HelpText = "Minimal random weight.")]
             public int RandMin { get; set; }
+
             [Option("rand-max", Required = false, Default = 10, HelpText = "Maximal random weight.")]
             public int RandMax { get; set; }
-            [Option('p', "edges-prob", Required = false, Default = 0.8f, HelpText = "Probability of existing edges.")]
-            public float EdgesProb { get; set; }
-            [Value(1)]
-            public string Filename { get; set; }
 
+            [Option('p', "edges-prob", Required = false, Default = 0.6f, HelpText = "Probability of edge existence.")]
+            public float EdgesProb { get; set; }
+
+            [Option('o', "output", Required = false, Default = "out.txt", HelpText = "Output filename.")]
+            public string Filename { get; set; }
         }
 
         static void Main(string[] args)
@@ -40,6 +41,7 @@ namespace ExampleGenerator
                         edgesProb = o.EdgesProb;
                         filename = o.Filename;
                     });
+
                 var edges = new int[n, n];
                 for (int i = 0; i < n; i++)
                 {
@@ -51,6 +53,7 @@ namespace ExampleGenerator
                             edges[i, j] = rand.Next(randMin, randMax);
                     }
                 }
+
                 using (StreamWriter writer = new StreamWriter(filename))
                 {
                     writer.WriteLine($"{n}");
