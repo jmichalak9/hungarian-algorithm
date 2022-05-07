@@ -27,8 +27,6 @@ namespace ExampleGenerator
         {
             try
             {
-                int w = 0;
-                int k = 1 / w;
                 var rand = new Random();
                 int randMin = 0, randMax = 0;
                 float edgesProb = 0;
