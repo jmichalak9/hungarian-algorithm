@@ -10,13 +10,13 @@ namespace ExampleGenerator
             [Value(0)]
             public int N { get; set; }
 
-            [Option("rand-min", Required = false, Default = 1, HelpText = "Minimal random weight.")]
+            [Option("rand-min", Required = false, Default = 3, HelpText = "Minimal random weight.")]
             public int RandMin { get; set; }
 
-            [Option("rand-max", Required = false, Default = 10, HelpText = "Maximal random weight.")]
+            [Option("rand-max", Required = false, Default = 30, HelpText = "Maximal random weight.")]
             public int RandMax { get; set; }
 
-            [Option('p', "edges-prob", Required = false, Default = 0.6f, HelpText = "Probability of edge existence.")]
+            [Option('p', "edges-prob", Required = false, Default = 0.5f, HelpText = "Probability of edge existence.")]
             public float EdgesProb { get; set; }
 
             [Option('o', "output", Required = false, Default = "out.txt", HelpText = "Output filename.")]
