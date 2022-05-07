@@ -2,12 +2,12 @@
 
 public class BipartiteGraph
 {
-    private int[,] costs;
+    public readonly int[,] Costs;
     private int n;
 
     public BipartiteGraph(int[,] costs)
     {
-        this.costs = costs;
+        this.Costs = costs;
         this.n = costs.GetLength(0);
     }
 
@@ -57,7 +57,7 @@ public class BipartiteGraph
             // Init Slack
             for (int k = 0; k < n; k++)
             {
-                slack[k] = costs[root, k] - lx[root] - ly[k];
+                slack[k] = Costs[root, k] - lx[root] - ly[k];
                 slack_X[k] = root;
             }
 
@@ -78,7 +78,7 @@ public class BipartiteGraph
                     for (current_Y = 0; current_Y < n; current_Y++)
                     {
                         // Edge in equality graph and vertex not visited
-                        if (costs[current_X, current_Y] == lx[current_X] + ly[current_Y] && !T[current_Y])
+                        if (Costs[current_X, current_Y] == lx[current_X] + ly[current_Y] && !T[current_Y])
                         {
                             // Augmenting path found
                             if (matchY[current_Y] == -1)
@@ -97,9 +97,9 @@ public class BipartiteGraph
                             // Update slack
                             for (int t = 0; t < n; t++)
                             {
-                                if (costs[next_X, t] - lx[next_X] - ly[t] < slack[t])
+                                if (Costs[next_X, t] - lx[next_X] - ly[t] < slack[t])
                                 {
-                                    slack[t] = costs[next_X, t] - lx[next_X] - ly[t];
+                                    slack[t] = Costs[next_X, t] - lx[next_X] - ly[t];
                                     slack_X[t] = next_X;
                                 }
                             }
@@ -140,9 +140,9 @@ public class BipartiteGraph
                                     // Update slack
                                     for (int t = 0; t < n; t++)
                                     {
-                                        if (costs[next_X, t] - lx[next_X] - ly[t] < slack[t])
+                                        if (Costs[next_X, t] - lx[next_X] - ly[t] < slack[t])
                                         {
-                                            slack[t] = costs[next_X, t] - lx[next_X] - ly[t];
+                                            slack[t] = Costs[next_X, t] - lx[next_X] - ly[t];
                                             slack_X[t] = next_X;
                                         }
                                     }
@@ -169,7 +169,7 @@ public class BipartiteGraph
         {
             if (matchX[i] != -1)
             {
-                result += costs[i, matchX[i]];
+                result += Costs[i, matchX[i]];
                 edges.Add((i, matchX[i]));
             }
         }
@@ -222,9 +222,9 @@ public class BipartiteGraph
             var minValue = int.MaxValue;
             for (int i = 0; i < n; i++)
             {
-                if (costs[i, j] != -1 && costs[i, j] < minValue)
+                if (Costs[i, j] != -1 && Costs[i, j] < minValue)
                 {
-                    minValue = costs[i, j];
+                    minValue = Costs[i, j];
                 }
             }
 

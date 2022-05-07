@@ -3,9 +3,10 @@ using graph;
 
 namespace program;
 
-public class GraphReader
+public static class GraphReader
 {
-    public BipartiteGraph ReadGraph(string path)
+    public static int MaxWeight = 1_000_000;
+    public static BipartiteGraph ReadGraph(string path)
     {
         const Int32 bufferSize = 128*128;
         using (var fileStream = File.OpenRead(path))
@@ -30,7 +31,7 @@ public class GraphReader
                     costs[i, j] = int.Parse(row[j]);
                     if (costs[i, j] == -1)
                     {
-                        costs[i,j] = 1_000_000;
+                        costs[i,j] = MaxWeight;
                     }
                 }
             }

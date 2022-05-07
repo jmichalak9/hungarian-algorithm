@@ -10,22 +10,26 @@ try
     {
         throw new Exception($"expected 2 arguments for input and output file, got {args.Length}");
     }
-    var gr = new GraphReader();
-    var graph = gr.ReadGraph(args[0]);
+
+    var graph = GraphReader.ReadGraph(args[0]);
     
     var (matching, weight) = graph.MinWeightPerfectMatching();
     
     using (StreamWriter writer = new StreamWriter(args[1]))
     {
-        if (matching.Count == 0)
+        foreach(var match in matching)
         {
-            writer.WriteLine("no matching found");
-            return;
+            if(graph.Costs[match.x, match.y] == GraphReader.MaxWeight)
+            {
+                writer.WriteLine("no matching found");
+                return;
+            }
         }
+
         writer.WriteLine(weight);
         foreach (var e in matching)
         {
-            writer.WriteLine($"{e.Item1} {e.Item2}");
+            writer.WriteLine($"{e.x} {e.y}");
         }
     }
 }
