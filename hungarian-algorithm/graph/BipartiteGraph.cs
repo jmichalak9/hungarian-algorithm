@@ -149,6 +149,8 @@ public class BipartiteGraph
                                 }
                             }
                         }
+
+                        throw new NoAugmentingPathFoundException("Augmenting path was not found after labels update!");
                     }
                 }
             }
