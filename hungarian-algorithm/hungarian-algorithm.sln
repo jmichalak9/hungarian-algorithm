@@ -1,12 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "graph", "graph\graph.csproj", "{2764D645-15FA-4485-A043-C327ECAC098B}"
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32228.430
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "graph", "graph\graph.csproj", "{2764D645-15FA-4485-A043-C327ECAC098B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "program", "program\program.csproj", "{A4627B5B-D974-406D-91DD-94619293F853}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "program", "program\program.csproj", "{A4627B5B-D974-406D-91DD-94619293F853}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "graph-tests", "graph-tests\graph-tests.csproj", "{C8B73FE8-ADDE-4EDE-BD1C-B8C0205A9859}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "example-generator", "example-generator\example-generator.csproj", "{7AD06568-1158-4BDB-9A6D-F2D513362CF7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "example-generator", "example-generator\example-generator.csproj", "{7AD06568-1158-4BDB-9A6D-F2D513362CF7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HungarianAlgoritmTests", "HungarianAlgoritmTests\HungarianAlgoritmTests.csproj", "{34D9BF88-ED14-4681-9151-9C45A9F02CFE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -22,13 +25,19 @@ Global
 		{A4627B5B-D974-406D-91DD-94619293F853}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A4627B5B-D974-406D-91DD-94619293F853}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A4627B5B-D974-406D-91DD-94619293F853}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C8B73FE8-ADDE-4EDE-BD1C-B8C0205A9859}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C8B73FE8-ADDE-4EDE-BD1C-B8C0205A9859}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C8B73FE8-ADDE-4EDE-BD1C-B8C0205A9859}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C8B73FE8-ADDE-4EDE-BD1C-B8C0205A9859}.Release|Any CPU.Build.0 = Release|Any CPU
 		{7AD06568-1158-4BDB-9A6D-F2D513362CF7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{7AD06568-1158-4BDB-9A6D-F2D513362CF7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7AD06568-1158-4BDB-9A6D-F2D513362CF7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7AD06568-1158-4BDB-9A6D-F2D513362CF7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{34D9BF88-ED14-4681-9151-9C45A9F02CFE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{34D9BF88-ED14-4681-9151-9C45A9F02CFE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{34D9BF88-ED14-4681-9151-9C45A9F02CFE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{34D9BF88-ED14-4681-9151-9C45A9F02CFE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DEE36D21-CAAB-47F2-9C58-DFDF56EE4E3D}
 	EndGlobalSection
 EndGlobal

@@ -149,11 +149,6 @@ public class BipartiteGraph
                                 }
                             }
                         }
-
-                        if (!is_augmenting_path)
-                        {
-                            throw new NoAugmentingPathFoundException("Augmenting path was not found after labels update!");
-                        }
                     }
                 }
             }
