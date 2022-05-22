@@ -5,11 +5,11 @@ VisualStudioVersion = 17.1.32228.430
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "graph", "graph\graph.csproj", "{2764D645-15FA-4485-A043-C327ECAC098B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "program", "program\program.csproj", "{A4627B5B-D974-406D-91DD-94619293F853}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "hungarian-algorithm", "program\hungarian-algorithm.csproj", "{A4627B5B-D974-406D-91DD-94619293F853}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "example-generator", "example-generator\example-generator.csproj", "{7AD06568-1158-4BDB-9A6D-F2D513362CF7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HungarianAlgoritmTests", "HungarianAlgoritmTests\HungarianAlgoritmTests.csproj", "{34D9BF88-ED14-4681-9151-9C45A9F02CFE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "hungarian-algorithm-tests", "HungarianAlgoritmTests\hungarian-algorithm-tests.csproj", "{34D9BF88-ED14-4681-9151-9C45A9F02CFE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

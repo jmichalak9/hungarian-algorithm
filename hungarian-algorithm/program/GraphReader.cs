@@ -29,6 +29,11 @@ public static class GraphReader
                 for (int j = 0; j < n; j++)
                 {
                     costs[i, j] = int.Parse(row[j]);
+                    if (costs[i, j] > MaxWeight)
+                    {
+                        throw new Exception($"weight cannot be bigger than {MaxWeight}");
+                    }
+
                     if (costs[i, j] == -1)
                     {
                         costs[i,j] = MaxWeight;
