@@ -351,3 +351,7 @@ MigrationBackup/
 
 .DS_Store
 .idea
+# Exclude too big examples
+hungarian-algorithm/examples/*?????.txt
+# Exclude data sets
+hungarian-algorithm/examples/*?/

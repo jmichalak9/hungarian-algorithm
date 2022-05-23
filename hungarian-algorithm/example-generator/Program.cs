@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text;
 using CommandLine;
 
 namespace ExampleGenerator
@@ -54,7 +55,7 @@ namespace ExampleGenerator
                     }
                 }
 
-                using (StreamWriter writer = new StreamWriter(filename))
+                using (StreamWriter writer = new StreamWriter(filename, false, Encoding.UTF8, 65536))
                 {
                     writer.WriteLine($"{n}");
                     for (int i = 0; i < n; i++)

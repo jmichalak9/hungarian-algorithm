@@ -2,7 +2,7 @@
 
 using graph;
 using program;
-
+using System.Diagnostics;
 try
 {
 
@@ -13,7 +13,13 @@ try
 
     var graph = GraphReader.ReadGraph(args[0]);
     
-    var (matching, weight) = graph.MinWeightPerfectMatching();
+    List<(int x, int y)> matching = new List<(int x, int y)>();
+    int weight = 0;
+    Clock.BenchmarkCpu(() =>
+    {
+        (matching, weight) = graph.MinWeightPerfectMatching();
+    }, 1);
+
     
     using (StreamWriter writer = new StreamWriter(args[1]))
     {

@@ -8,9 +8,8 @@ public static class GraphReader
     public static readonly int MaxWeight = 1_000_000;
     public static BipartiteGraph ReadGraph(string path)
     {
-        const Int32 bufferSize = 128*128;
         using (var fileStream = File.OpenRead(path))
-        using (var streamReader = new StreamReader(fileStream, Encoding.UTF8, true, bufferSize))
+        using (var streamReader = new StreamReader(fileStream, Encoding.UTF8, true, 65536))
         {
             String line = streamReader.ReadLine()!;
             var n = Convert.ToInt32(line);
