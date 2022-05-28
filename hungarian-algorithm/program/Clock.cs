@@ -144,6 +144,7 @@ public class Clock
                 action();
             stopwatch.Stop();
             timings[i] = stopwatch.Elapsed.TotalMilliseconds;
+            Console.WriteLine($"execution time: {timings[i]} ms");
             return;
         }
     }

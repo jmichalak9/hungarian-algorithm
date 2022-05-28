@@ -3,43 +3,75 @@
 using graph;
 using program;
 using System.Diagnostics;
-try
+using CommandLine;
+
+namespace program
 {
-
-    if (args.Length != 2)
+    class Program
     {
-        throw new Exception($"expected 2 arguments for input and output file, got {args.Length}");
-    }
-
-    var graph = GraphReader.ReadGraph(args[0]);
-    
-    List<(int x, int y)> matching = new List<(int x, int y)>();
-    int weight = 0;
-    Clock.BenchmarkCpu(() =>
-    {
-        (matching, weight) = graph.MinWeightPerfectMatching();
-    }, 1);
-
-    
-    using (StreamWriter writer = new StreamWriter(args[1]))
-    {
-        foreach(var match in matching)
+        public class Options
         {
-            if(graph.Costs[match.x, match.y] == GraphReader.MaxWeight)
+            [Value(0)]
+            public string InFile { get; set; }
+            [Value(1)]
+            public string OutFile { get; set; }
+            [Option("time", Required = false, Default = false, HelpText = "Show algorithm execution time.")]
+            public bool Time { get; set; }
+        }
+        static void Main(string[] args)
+        {   
+            try
             {
-                writer.WriteLine("no matching found");
-                return;
+                bool showTime = false;
+                string inFile = "", outFile = "";
+                Parser.Default.ParseArguments<Options>(args)
+                    .WithParsed<Options>(o =>
+                    {
+                        showTime = o.Time;
+                        inFile = o.InFile;
+                        outFile = o.OutFile;
+                    });
+
+                var graph = GraphReader.ReadGraph(inFile);
+    
+                List<(int x, int y)> matching = new List<(int x, int y)>();
+                int weight = 0;
+                if (showTime)
+                {
+                    Clock.BenchmarkCpu(() =>
+                    {
+                        (matching, weight) = graph.MinWeightPerfectMatching();
+                    }, 1);     
+                }
+                else
+                {
+                    (matching, weight) = graph.MinWeightPerfectMatching();
+                }
+
+
+    
+                using (StreamWriter writer = new StreamWriter(outFile))
+                {
+                    foreach(var match in matching)
+                    {
+                        if(graph.Costs[match.x, match.y] == GraphReader.MaxWeight)
+                        {
+                            writer.WriteLine("no matching found");
+                            return;
+                        }
+                    }
+
+                    writer.WriteLine(weight);
+                    foreach (var e in matching)
+                    {
+                        writer.WriteLine($"{e.x} {e.y}");
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine($"error: {e.Message}");
             }
         }
-
-        writer.WriteLine(weight);
-        foreach (var e in matching)
-        {
-            writer.WriteLine($"{e.x} {e.y}");
-        }
     }
-}
-catch (Exception e)
-{
-    Console.WriteLine($"error: {e.Message}");
 }
