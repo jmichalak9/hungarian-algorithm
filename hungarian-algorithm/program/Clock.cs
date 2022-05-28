@@ -12,8 +12,6 @@ public class Clock
         void Reset();
     }
 
-
-
     class TimeWatch : IStopwatch
     {
         Stopwatch stopwatch = new Stopwatch();
@@ -27,8 +25,6 @@ public class Clock
         {
             get { return stopwatch.IsRunning; }
         }
-
-
 
         public TimeWatch()
         {
@@ -48,8 +44,6 @@ public class Clock
             Thread.CurrentThread.Priority = ThreadPriority.Highest;
         }
 
-
-
         public void Start()
         {
             stopwatch.Start();
@@ -66,15 +60,11 @@ public class Clock
         }
     }
 
-
-
     class CpuWatch : IStopwatch
     {
         TimeSpan startTime;
         TimeSpan endTime;
         bool isRunning;
-
-
 
         public TimeSpan Elapsed
         {
@@ -91,8 +81,6 @@ public class Clock
         {
             get { return isRunning; }
         }
-
-
 
         public void Start()
         {
@@ -112,8 +100,6 @@ public class Clock
             endTime = TimeSpan.Zero;
         }
     }
-
-
 
     public static void BenchmarkTime(Action action, int iterations = 10000)
     {
@@ -135,18 +121,15 @@ public class Clock
         action();
 
         var stopwatch = new T();
-        var timings = new double[1];
-        for (int i = 0; i < timings.Length; i++)
+        stopwatch.Reset();
+        stopwatch.Start();
+        for (int j = 0; j < iterations; j++)
         {
-            stopwatch.Reset();
-            stopwatch.Start();
-            for (int j = 0; j < iterations; j++)
-                action();
-            stopwatch.Stop();
-            timings[i] = stopwatch.Elapsed.TotalMilliseconds;
-            Console.WriteLine($"execution time: {timings[i]} ms");
-            return;
+            action();
         }
+        stopwatch.Stop();
+        double timing = stopwatch.Elapsed.TotalMilliseconds;
+        Console.WriteLine($"execution time: {timing} ms");
     }
 
     public static void BenchmarkCpu(Action action, int iterations = 10000)

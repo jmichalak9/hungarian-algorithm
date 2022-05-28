@@ -12,9 +12,9 @@ namespace program
         public class Options
         {
             [Value(0)]
-            public string InFile { get; set; }
+            public string InFile { get; set; } = "";
             [Value(1)]
-            public string OutFile { get; set; }
+            public string OutFile { get; set; } = "";
             [Option("time", Required = false, Default = false, HelpText = "Show algorithm execution time.")]
             public bool Time { get; set; }
         }
@@ -47,8 +47,6 @@ namespace program
                 {
                     (matching, weight) = graph.MinWeightPerfectMatching();
                 }
-
-
     
                 using (StreamWriter writer = new StreamWriter(outFile))
                 {
